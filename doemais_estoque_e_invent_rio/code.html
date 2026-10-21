@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'on-primary-fixed': '#002113', 'surface-tint': '#006c49', 'on-background': '#191c1e', 'error-container': '#ffdad6', 'tertiary-fixed': '#ffddb8', 'secondary-container': '#dae2fd', 'primary-fixed': '#6ffbbe', 'on-error-container': '#93000a', 'surface-dim': '#d8dadc', 'tertiary-fixed-dim': '#ffb95f', 'background': '#f7f9fb', 'primary-fixed-dim': '#4edea3', 'on-secondary': '#ffffff', 'on-error': '#ffffff', 'primary-container': '#10b981', 'on-surface': '#191c1e', 'on-surface-variant': '#3c4a42', 'surface': '#f7f9fb', 'on-secondary-fixed': '#131b2e', 'secondary-fixed-dim': '#bec6e0', 'secondary': '#565e74', 'surface-variant': '#e0e3e5', 'on-tertiary': '#ffffff', 'inverse-on-surface': '#eff1f3', 'secondary-fixed': '#dae2fd', 'inverse-surface': '#2d3133', 'outline-variant': '#bbcabf', 'surface-container-highest': '#e0e3e5', 'on-secondary-container': '#5c647a', 'surface-bright': '#f7f9fb', 'on-primary-fixed-variant': '#005236', 'on-secondary-fixed-variant': '#3f465c', 'on-primary-container': '#00422b', 'outline': '#6c7a71', 'on-tertiary-container': '#523200', 'surface-container-high': '#e6e8ea', 'surface-container': '#eceef0', 'tertiary-container': '#e29100', 'surface-container-low': '#f2f4f6', 'on-primary': '#ffffff', 'inverse-primary': '#4edea3', 'surface-container-lowest': '#ffffff', 'primary': '#006c49', 'tertiary': '#855300', 'error': '#ba1a1a', 'on-tertiary-fixed-variant': '#653e00', 'on-tertiary-fixed': '#2a1700' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'space-xl': '2rem', 'space-xs': '0.25rem', 'margin-sm': '0.75rem', 'space-md': '1rem', 'space-sm': '0.5rem', 'gutter-sm': '0.75rem', 'gutter': '1rem', 'space-lg': '1.5rem', 'margin': '1rem' }, fontFamily: { 'body-sm': ['Plus Jakarta Sans'], 'label-md': ['Plus Jakarta Sans'], 'body-lg': ['Plus Jakarta Sans'], 'headline-md': ['Plus Jakarta Sans'], 'body-md': ['Plus Jakarta Sans'], 'label-sm': ['Plus Jakarta Sans'], 'label-lg': ['Plus Jakarta Sans'], 'headline-sm': ['Plus Jakarta Sans'], 'title-md': ['Plus Jakarta Sans'], 'headline-lg': ['Plus Jakarta Sans'], 'headline-lg-mobile': ['Plus Jakarta Sans'] }, fontSize: { 'body-sm': ['13px', { lineHeight: '18px', fontWeight: '400' }], 'label-md': ['12px', { lineHeight: '16px', fontWeight: '600' }], 'body-lg': ['16px', { lineHeight: '24px', fontWeight: '400' }], 'headline-md': ['22px', { lineHeight: '28px', fontWeight: '700' }], 'body-md': ['14px', { lineHeight: '20px', fontWeight: '400' }], 'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.5px', fontWeight: '700' }], 'label-lg': ['15px', { lineHeight: '20px', fontWeight: '600' }], 'headline-sm': ['18px', { lineHeight: '24px', fontWeight: '600' }], 'title-md': ['16px', { lineHeight: '22px', fontWeight: '600' }], 'headline-lg': ['32px', { lineHeight: '40px', fontWeight: '700' }], 'headline-lg-mobile': ['26px', { lineHeight: '32px', fontWeight: '700' }] } } } };</script><style>@layer base { html, body { width: 100vw; margin: 0; padding: 0; } body { overscroll-behavior: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 20px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style></head><body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="DoeMais Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUU8aMGrJ6i9WOd3Pgn_K8GlRBuRGHvwi9H4KRMcywmhieDF-GD66va1ixeW62rh5I3ygcK57C1QAHkg43aFIhKkwbPnXsLMkWxRx8XvruCcelrI0WiDW7Hl-eqAXcVJpE7QhGSS3Jlm72KUyKGLSAnGg115-O6bSlVRZM8eqjyqORPwB1WcAsoXCDRGOl0L8qLnODuAx2uVPf1MfylmVdSvsTy5QRMhR-TiTcWA3ElbnEfNPhsQeN"/><span class="font-title-md text-title-md text-on-surface tracking-tight">DoeMais</span></div><div class="flex items-center gap-space-sm"><h1 class="hidden font-label-md text-label-md text-on-surface-variant">Estoque Dashboard</h1><button aria-label="Perfil da Voluntária" class="flex items-center justify-center p-space-xs rounded-full min-w-[44px] min-h-[44px] hover:bg-surface-container active:scale-95 transition-all"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4qf6TkIo-q_hqgWWP52J1L4YKxvusOjuJoHvGLfggvMgFPfn345BDgQ-ua9zb3qeAPNpeI_lAKSUV0cmsBUx-8l033sKbbunoqQeZfA2ZRmkBzeinczM0rMQnZZlolGUC6-GCravcMTgVV0Tmd0HEepAtb5FBKT0MMytsd5EsIM2RLDxnvPld0JwwCj3sOfJ226mKl92LtyUdYBhiRfa4JJt3LZHwD-lEVchPVOE2ZDieLwMyKRYW"/></button></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin pb-6 gap-space-md">
+<!-- Overview Metrics Banner -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">warehouse</span>
+<span class="font-title-md text-title-md text-on-surface">Inventário Central</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary bg-primary-fixed/40 px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+        Ao vivo
+      </span>
+</div>
+<!-- Quick Stats Bento -->
+<div class="grid grid-cols-3 gap-2 pt-1">
+<!-- Total Items -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col justify-between">
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]">inventory</span>
+<span class="font-label-sm text-label-sm text-secondary">Total</span>
+</div>
+<div class="mt-1">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">1.420</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">unidades</p>
+</div>
+</div>
+<!-- Low Stock Alert -->
+<div class="bg-tertiary-fixed/30 rounded-lg p-space-sm flex flex-col justify-between">
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span class="font-label-sm text-label-sm text-tertiary">Baixo</span>
+</div>
+<div class="mt-1">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-on-tertiary-container">8</span>
+<p class="font-label-sm text-label-sm text-tertiary">itens críticos</p>
+</div>
+</div>
+<!-- Expiring Soon Alert -->
+<div class="bg-error-container/40 rounded-lg p-space-sm flex flex-col justify-between">
+<div class="flex items-center gap-1 text-error">
+<span class="material-symbols-outlined text-[16px]">event_busy</span>
+<span class="font-label-sm text-label-sm text-error">Vencendo</span>
+</div>
+<div class="mt-1">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-on-error-container">4</span>
+<p class="font-label-sm text-label-sm text-error">em 30 dias</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Search & Filter Controls -->
+<div class="flex items-center gap-space-sm w-full">
+<div class="flex-1 relative flex items-center bg-surface-container-high rounded-xl px-space-md py-3 shadow-sm focus-within:ring-2 focus-within:ring-primary">
+<span class="material-symbols-outlined text-outline text-[20px] mr-2">search</span>
+<input class="bg-transparent border-0 outline-none w-full font-body-md text-body-md text-on-surface placeholder:text-outline" id="inventorySearchInput" placeholder="Buscar item ou código de barras..." type="text"/>
+<button aria-label="Escanear Código" class="flex items-center justify-center p-1 text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">barcode_scanner</span>
+</button>
+</div>
+<button aria-label="Filtro Avançado" class="min-w-[48px] min-h-[48px] flex items-center justify-center bg-surface-container-lowest rounded-xl shadow-sm text-on-surface hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[22px]">tune</span>
+</button>
+</div>
+<!-- Category Filter Chips (Horizontal Scrollable) -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5 -mx-margin px-margin">
+<button class="category-chip flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full font-label-md text-label-md bg-primary-container text-on-primary-container shadow-sm active:scale-95 transition-all" data-category="all">
+<span class="material-symbols-outlined text-[16px]">grid_view</span>
+<span>Todos</span>
+<span class="bg-on-primary-container/15 px-1.5 py-0.2 rounded-full font-label-sm text-label-sm">42</span>
+</button>
+<button class="category-chip flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface shadow-sm hover:bg-surface-container-high active:scale-95 transition-all" data-category="alimentos">
+<span class="material-symbols-outlined text-[16px] text-tertiary">restaurant</span>
+<span>Alimentos</span>
+<span class="bg-surface-container-high px-1.5 py-0.2 rounded-full font-label-sm text-label-sm text-secondary">24</span>
+</button>
+<button class="category-chip flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface shadow-sm hover:bg-surface-container-high active:scale-95 transition-all" data-category="higiene">
+<span class="material-symbols-outlined text-[16px] text-secondary">sanitizer</span>
+<span>Higiene</span>
+<span class="bg-surface-container-high px-1.5 py-0.2 rounded-full font-label-sm text-label-sm text-secondary">12</span>
+</button>
+<button class="category-chip flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface shadow-sm hover:bg-surface-container-high active:scale-95 transition-all" data-category="vestuario">
+<span class="material-symbols-outlined text-[16px] text-primary">apparel</span>
+<span>Vestuário</span>
+<span class="bg-surface-container-high px-1.5 py-0.2 rounded-full font-label-sm text-label-sm text-secondary">6</span>
+</button>
+</div>
+<!-- Inventory Items List Header -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Itens Cadastrados</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full" id="itemCountDisplay">6 exibidos</span>
+</div>
+<button class="flex items-center gap-1 font-label-md text-label-md text-primary active:scale-95 transition-transform">
+<span>Ordenar</span>
+<span class="material-symbols-outlined text-[16px]">swap_vert</span>
+</button>
+</div>
+<!-- Donation Inventory Cards -->
+<div class="flex flex-col gap-space-sm" id="inventoryCardContainer">
+<!-- Item 1: Arroz Branco -->
+<div class="inventory-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md flex flex-col gap-space-sm" data-cat="alimentos" data-name="arroz branco tipo 1 5kg">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex gap-space-sm items-center">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Bags of raw white grain rice sealed neatly in clean clear packaging ready for food bank charity distribution on a light background, warm natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgODxBifpJXifbLPqBbehx-xDKz_eYxeISgW2E2yXXSUHxHJY-JTNcNBCE4hzpppCIrW6XGMJBzKaKAGcHxhBkrqGTASD0ot2lFuLQFEy3s9BN5QAzfodr5U-dHwqVNqrVepONQPNSpwJZyEgUIWSK5FSbkyENcRoM8-WWBFO8Z1VIla0Ium-EQ8Vdycn7gmbFK9pItKHw_9-EuOh03_MP22BKtBdFrTYaNx1q0Tu_6pYevX8R-Za6"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface truncate">Arroz Branco Tipo 1 (5kg)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">category</span> Alimentos • Prateleira A2
+            </span>
+</div>
+</div>
+<!-- Pill: Normal -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-fixed/40 text-on-primary-fixed-variant font-label-sm text-label-sm flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          Normal
+        </span>
+</div>
+<div class="flex items-center justify-between pt-2 border-t-0 bg-surface-container-low/60 -mx-space-md -mb-space-md px-space-md py-2.5 rounded-b-xl">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Estoque Disponível</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-on-surface">145</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">pacotes</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline block">Validade</span>
+<span class="font-label-md text-label-md text-on-surface">Nov/2025</span>
+</div>
+<button aria-label="Detalhes de Arroz Branco" class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-transform ml-1">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 2: Leite Integral -->
+<div class="inventory-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md flex flex-col gap-space-sm" data-cat="alimentos" data-name="leite integral uht 1l">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex gap-space-sm items-center">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Cartons of UHT whole milk neatly stacked inside an organized donation warehouse distribution pantry box with gentle ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu8jpThwPC5njkRhyXiDPRTIfRYRf7OiGbH4BzH3NE0lt2X4OY5V4R2_ddIAccXg8P2VGPvgHoFKHQ8cpfjGy42ukF0AZq5MKdgJJl0UzHShV9x7vDxCh9DAbEajqas5rHoL-YlcGm-EK4Xnakv_9m-1Qx1Z_-H9ioNPu5Ocj9wxOSqo9M-zvud3ujhne6VNpKWeXQZVqsMIwoqcbJ_24w-JAORU6OR7wJOSVjhBYRH31bzgHpvtCr"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface truncate">Leite Integral UHT (1L)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">category</span> Alimentos • Setor B1
+            </span>
+</div>
+</div>
+<!-- Pill: Estoque Baixo -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+          Estoque Baixo
+        </span>
+</div>
+<div class="flex items-center justify-between pt-2 border-t-0 bg-surface-container-low/60 -mx-space-md -mb-space-md px-space-md py-2.5 rounded-b-xl">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Estoque Disponível</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-tertiary">18</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">caixas</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline block">Validade</span>
+<span class="font-label-md text-label-md text-on-surface">Dez/2024</span>
+</div>
+<button aria-label="Detalhes de Leite Integral" class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-transform ml-1">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 3: Kit Higiene Pessoal -->
+<div class="inventory-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md flex flex-col gap-space-sm" data-cat="higiene" data-name="kit de higiene pessoal sabonete escova pasta">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex gap-space-sm items-center">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Personal hygiene relief kit with toothbrushes, soap bar, toothpaste packed neatly inside a sustainable pouch on wooden table, warm bright lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtMHGnNPerNCxOP8uLqoTcwKICtwmOBQpU-57Zzre0wdClJXllkmB6_tHqFuIL2AekHgvieieybtcB6gk3G1i2jPqE3KLzOnFtJxD4ipb6vPcCS8YAMM9Bw7a_v69YYUPL4-_xLitO5p-j0eTc7HzUr6e0_e3iVTLQrLb9ClzGUPicXfb8hlqDQRooewnTN4UIoXD6KxDiOM09P1iziQjAq-ppJ8cBB17rA5b849bSUHexEHrsTy63"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface truncate">Kit de Higiene Pessoal</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">category</span> Higiene • Corredor C
+            </span>
+</div>
+</div>
+<!-- Pill: Vencimento Próximo -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+          Expira em 15 dias
+        </span>
+</div>
+<div class="flex items-center justify-between pt-2 border-t-0 bg-surface-container-low/60 -mx-space-md -mb-space-md px-space-md py-2.5 rounded-b-xl">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Estoque Disponível</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-error">12</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">kits</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-error block">Atenção</span>
+<span class="font-label-md text-label-md text-error">Urgente doar</span>
+</div>
+<button aria-label="Detalhes de Kit Higiene" class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-transform ml-1">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 4: Feijão Carioca -->
+<div class="inventory-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md flex flex-col gap-space-sm" data-cat="alimentos" data-name="feijao carioca 1kg">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex gap-space-sm items-center">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-[24px]">grain</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface truncate">Feijão Carioca (1kg)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">category</span> Alimentos • Prateleira A1
+            </span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-fixed/40 text-on-primary-fixed-variant font-label-sm text-label-sm flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          Normal
+        </span>
+</div>
+<div class="flex items-center justify-between pt-2 border-t-0 bg-surface-container-low/60 -mx-space-md -mb-space-md px-space-md py-2.5 rounded-b-xl">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Estoque Disponível</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-on-surface">88</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">pacotes</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline block">Validade</span>
+<span class="font-label-md text-label-md text-on-surface">Jan/2026</span>
+</div>
+<button aria-label="Detalhes de Feijão Carioca" class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-transform ml-1">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 5: Sabonete Neutro -->
+<div class="inventory-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md flex flex-col gap-space-sm" data-cat="higiene" data-name="sabonete neutro 90g">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex gap-space-sm items-center">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary text-[24px]">soap</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface truncate">Sabonete Neutro 90g</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">category</span> Higiene • Corredor C
+            </span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+          Estoque Baixo
+        </span>
+</div>
+<div class="flex items-center justify-between pt-2 border-t-0 bg-surface-container-low/60 -mx-space-md -mb-space-md px-space-md py-2.5 rounded-b-xl">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Estoque Disponível</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-tertiary">15</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">unidades</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline block">Validade</span>
+<span class="font-label-md text-label-md text-on-surface">Out/2026</span>
+</div>
+<button aria-label="Detalhes de Sabonete Neutro" class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-transform ml-1">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 6: Agasalho Moletom -->
+<div class="inventory-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md flex flex-col gap-space-sm" data-cat="vestuario" data-name="agasalho moletom mg">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex gap-space-sm items-center">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-[24px]">checkroom</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface truncate">Agasalho Moletom M/G</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">category</span> Vestuário • Galpão Sul
+            </span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-fixed/40 text-on-primary-fixed-variant font-label-sm text-label-sm flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          Normal
+        </span>
+</div>
+<div class="flex items-center justify-between pt-2 border-t-0 bg-surface-container-low/60 -mx-space-md -mb-space-md px-space-md py-2.5 rounded-b-xl">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Estoque Disponível</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-on-surface">34</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">peças</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline block">Triagem</span>
+<span class="font-label-md text-label-md text-on-surface">Higienizado</span>
+</div>
+<button aria-label="Detalhes de Agasalho" class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-transform ml-1">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State (Hidden by default, shown via JS filter when no matches) -->
+<div class="hidden flex-col items-center justify-center p-space-lg text-center bg-surface-container-lowest rounded-xl" id="emptySearchNotice">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-outline mb-2">
+<span class="material-symbols-outlined text-[28px]">search_off</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface">Nenhum item localizado</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Verifique a ortografia ou limpe os filtros para visualizar todo o estoque.</p>
+</div>
+<!-- Floating Action Button (FAB) for Quick Entry -->
+<div class="fixed right-4 bottom-20 z-40">
+<button aria-label="Registrar Entrada Rápida" class="flex items-center gap-2 px-4 py-3.5 bg-primary-container text-on-primary font-label-lg text-label-lg rounded-full shadow-[0_4px_16px_rgba(16,185,129,0.35)] hover:brightness-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[24px]">add</span>
+<span class="pr-1 tracking-wide">Nova Doação</span>
+</button>
+</div>
+</div>
+<script>
+  (function() {
+    const searchInput = document.getElementById('inventorySearchInput');
+    const chips = document.querySelectorAll('.category-chip');
+    const cards = document.querySelectorAll('.inventory-card');
+    const countDisplay = document.getElementById('itemCountDisplay');
+    const emptyNotice = document.getElementById('emptySearchNotice');
+
+    let activeCategory = 'all';
+    let searchQuery = '';
+
+    function filterCards() {
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const itemCat = card.getAttribute('data-cat') || '';
+        const itemName = card.getAttribute('data-name') || '';
+
+        const matchesCat = (activeCategory === 'all' || itemCat === activeCategory);
+        const matchesSearch = itemName.toLowerCase().includes(searchQuery.toLowerCase());
+
+        if (matchesCat && matchesSearch) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      countDisplay.textContent = visibleCount + (visibleCount === 1 ? ' exibido' : ' exibidos');
+
+      if (visibleCount === 0) {
+        emptyNotice.classList.remove('hidden');
+        emptyNotice.classList.add('flex');
+      } else {
+        emptyNotice.classList.add('hidden');
+        emptyNotice.classList.remove('flex');
+      }
+    }
+
+    // Category Chip Clicks
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => {
+          c.classList.remove('bg-primary-container', 'text-on-primary-container');
+          c.classList.add('bg-surface-container-lowest', 'text-on-surface');
+        });
+
+        chip.classList.remove('bg-surface-container-lowest', 'text-on-surface');
+        chip.classList.add('bg-primary-container', 'text-on-primary-container');
+
+        activeCategory = chip.getAttribute('data-category');
+        filterCards();
+      });
+    });
+
+    // Search Filtering
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.trim();
+        filterCards();
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-4px_16px_rgba(15,23,42,0.06)]" data-active-classes="text-primary font-label-md"><div class="flex justify-around items-center h-16 px-margin"><a aria-current="page" class="flex flex-col items-center justify-center gap-space-xs min-w-[48px] min-h-[48px] transition-colors text-primary font-label-md" data-path="estoque-dashboard" href="#"><span class="material-symbols-outlined text-[24px]">inventory_2</span><span class="font-label-sm text-label-sm">Estoque</span></a><a class="flex flex-col items-center justify-center gap-space-xs min-w-[48px] min-h-[48px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="registrar-entrada" href="#"><span class="material-symbols-outlined text-[24px]">add_circle</span><span class="font-label-sm text-label-sm">Entrada</span></a><a class="flex flex-col items-center justify-center gap-space-xs min-w-[48px] min-h-[48px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="registrar-saida" href="#"><span class="material-symbols-outlined text-[24px]">remove_circle</span><span class="font-label-sm text-label-sm">Saída</span></a><a class="flex flex-col items-center justify-center gap-space-xs min-w-[48px] min-h-[48px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="perfil-ong" href="#"><span class="material-symbols-outlined text-[24px]">corporate_fare</span><span class="font-label-sm text-label-sm">Perfil/ONG</span></a></div></nav></body></html>
