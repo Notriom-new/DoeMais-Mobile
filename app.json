@@ -13,9 +13,14 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "br.org.doemais.mobile",
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#10B981"
-      }
+      },
+      "permissions": [
+        "CAMERA"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
