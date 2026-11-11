@@ -24,6 +24,16 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-asset",
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "46746903-d8b6-4b35-bbd6-67999a99c477"
+      }
+    },
+    "owner": "notriom"
   }
 }
