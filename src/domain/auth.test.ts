@@ -1,4 +1,4 @@
-import { validateLoginForm, authenticateUser } from './auth';
+import { validateLoginForm, authenticateUser, validateRegisterForm, registerUser } from './auth';
 
 describe('Auth Domain - Regras de Negócio de Autenticação (TDD)', () => {
   describe('validateLoginForm', () => {
@@ -29,17 +29,45 @@ describe('Auth Domain - Regras de Negócio de Autenticação (TDD)', () => {
     });
   });
 
-  describe('authenticateUser', () => {
-    it('deve autenticar com sucesso para credenciais cadastradas', async () => {
-      const user = await authenticateUser('coordenador@esperancaviva.org', 'doemais2026');
-      expect(user).toBeDefined();
-      expect(user.email).toBe('coordenador@esperancaviva.org');
-      expect(user.ongName).toContain('Esperança');
+  describe('validateRegisterForm', () => {
+    it('deve retornar erro se o nome tiver menos de 3 caracteres', () => {
+      const result = validateRegisterForm('Jo', 'joao@email.com', '123456');
+      expect(result.isValid).toBe(false);
+      expect(result.errors.name).toBe('O nome deve ter pelo menos 3 caracteres.');
     });
 
-    it('deve lançar erro se as credenciais forem incorretas', async () => {
+    it('deve retornar erro se o e-mail for inválido', () => {
+      const result = validateRegisterForm('João Silva', 'email_ruim', '123456');
+      expect(result.isValid).toBe(false);
+      expect(result.errors.email).toBe('Informe um e-mail válido.');
+    });
+  });
+
+  describe('registerUser & authenticateUser', () => {
+    it('deve cadastrar um novo usuário com sucesso e permitir login com a senha cadastrada', async () => {
+      const novoEmail = 'maria.voluntaria@gmail.com';
+      const novaSenha = 'senhaSecreta123';
+
+      const user = await registerUser('Maria Oliveira', novoEmail, novaSenha);
+      expect(user).toBeDefined();
+      expect(user.name).toBe('Maria Oliveira');
+      expect(user.email).toBe(novoEmail);
+
+      // Agora autentica com as credenciais criadas
+      const loggedUser = await authenticateUser(novoEmail, novaSenha);
+      expect(loggedUser.id).toBe(user.id);
+      expect(loggedUser.email).toBe(novoEmail);
+    });
+
+    it('deve lançar erro se tentar cadastrar e-mail duplicado', async () => {
       await expect(
-        authenticateUser('coordenador@esperancaviva.org', 'senha_errada')
+        registerUser('Outro Usuário', 'coordenador@esperancaviva.org', 'outraSenha')
+      ).rejects.toThrow('Este e-mail já está cadastrado no sistema.');
+    });
+
+    it('deve lançar erro se a senha digitada for diferente da cadastrada', async () => {
+      await expect(
+        authenticateUser('maria.voluntaria@gmail.com', 'senha_errada')
       ).rejects.toThrow('Credenciais inválidas. Verifique seu e-mail e senha.');
     });
   });

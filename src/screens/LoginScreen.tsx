@@ -8,13 +8,14 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
+  Alert,
 } from 'react-native';
 import { colors } from '../theme/colors';
 import { spacing, borderRadius } from '../theme/spacing';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
 import { Card } from '../components/Card';
-import { validateLoginForm, authenticateUser } from '../domain/auth';
+import { validateLoginForm, authenticateUser, validateRegisterForm, registerUser } from '../domain/auth';
 import { UserProfile } from '../types/auth';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -23,13 +24,15 @@ export interface LoginScreenProps {
 }
 
 export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
+  const [mode, setMode] = useState<'login' | 'register'>('login');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [selectedOng, setSelectedOng] = useState('ONG Esperança Viva — Unidade Central');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState<{ email?: string; password?: string; general?: string }>({});
+  const [errors, setErrors] = useState<{ name?: string; email?: string; password?: string; general?: string }>({});
 
   const handleLogin = async () => {
     setErrors({});
@@ -46,6 +49,27 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
       onLoginSuccess(user);
     } catch (err: any) {
       setErrors({ general: err.message || 'Erro ao realizar login.' });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleRegister = async () => {
+    setErrors({});
+    const validation = validateRegisterForm(name, email, password);
+
+    if (!validation.isValid) {
+      setErrors(validation.errors);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const newUser = await registerUser(name, email, password, selectedOng);
+      Alert.alert('Conta Criada com Sucesso!', `Bem-vindo(a), ${newUser.name}! Você já está conectado.`);
+      onLoginSuccess(newUser);
+    } catch (err: any) {
+      setErrors({ general: err.message || 'Erro ao cadastrar conta.' });
     } finally {
       setLoading(false);
     }
@@ -100,14 +124,47 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
             </View>
 
             <View style={styles.welcomeBox}>
-              <Text style={styles.welcomeTitle}>Acesse sua conta</Text>
+              <Text style={styles.welcomeTitle}>
+                {mode === 'login' ? 'Acesse sua conta' : 'Criar nova conta'}
+              </Text>
               <Text style={styles.welcomeSubtitle}>
-                Gerencie as doações da sua entidade de forma transparente e ágil.
+                {mode === 'login'
+                  ? 'Gerencie as doações da sua entidade de forma transparente e ágil.'
+                  : 'Cadastre-se como voluntário(a) e participe da gestão de doações.'}
               </Text>
             </View>
           </View>
 
-          {/* Login Card */}
+          {/* Mode Switch Tabs */}
+          <View style={styles.tabsSwitchContainer}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                setMode('login');
+                setErrors({});
+              }}
+              style={[styles.switchTab, mode === 'login' && styles.switchTabActive]}
+            >
+              <Text style={[styles.switchTabText, mode === 'login' && styles.switchTabTextActive]}>
+                Entrar
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                setMode('register');
+                setErrors({});
+              }}
+              style={[styles.switchTab, mode === 'register' && styles.switchTabActive]}
+            >
+              <Text style={[styles.switchTabText, mode === 'register' && styles.switchTabTextActive]}>
+                Cadastrar
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Main Card */}
           <Card style={styles.loginCard}>
             {/* ONG Unit Info */}
             <View style={styles.ongSelectorBox}>
@@ -135,6 +192,27 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 />
                 <Text style={styles.generalErrorText}>{errors.general}</Text>
               </View>
+            )}
+
+            {/* Name Field (apenas no modo cadastro) */}
+            {mode === 'register' && (
+              <Input
+                label="Nome Completo"
+                placeholder="Ex.: Maria Oliveira"
+                value={name}
+                onChangeText={(text) => {
+                  setName(text);
+                  if (errors.name) setErrors((prev) => ({ ...prev, name: undefined }));
+                }}
+                error={errors.name}
+                leftIcon={
+                  <MaterialCommunityIcons
+                    name="account-outline"
+                    size={20}
+                    color={colors.onSurfaceVariant}
+                  />
+                }
+              />
             )}
 
             {/* Email Field */}
@@ -186,28 +264,30 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
               onRightIconPress={() => setShowPassword(!showPassword)}
             />
 
-            {/* Remember Me Option */}
-            <TouchableOpacity
-              activeOpacity={0.7}
-              style={styles.rememberRow}
-              onPress={() => setRememberMe(!rememberMe)}
-            >
-              <MaterialCommunityIcons
-                name={rememberMe ? 'checkbox-marked' : 'checkbox-blank-outline'}
-                size={20}
-                color={rememberMe ? colors.primaryContainer : colors.outline}
-              />
-              <Text style={styles.rememberText}>Lembrar nesta unidade</Text>
-            </TouchableOpacity>
+            {/* Remember Me Option (apenas no login) */}
+            {mode === 'login' && (
+              <TouchableOpacity
+                activeOpacity={0.7}
+                style={styles.rememberRow}
+                onPress={() => setRememberMe(!rememberMe)}
+              >
+                <MaterialCommunityIcons
+                  name={rememberMe ? 'checkbox-marked' : 'checkbox-blank-outline'}
+                  size={20}
+                  color={rememberMe ? colors.primaryContainer : colors.outline}
+                />
+                <Text style={styles.rememberText}>Lembrar nesta unidade</Text>
+              </TouchableOpacity>
+            )}
 
             {/* Submit Button */}
             <Button
-              title="Entrar no Sistema"
-              onPress={handleLogin}
+              title={mode === 'login' ? 'Entrar no Sistema' : 'Criar Minha Conta'}
+              onPress={mode === 'login' ? handleLogin : handleRegister}
               loading={loading}
               icon={
                 <MaterialCommunityIcons
-                  name="arrow-right"
+                  name={mode === 'login' ? 'arrow-right' : 'check-circle-outline'}
                   size={20}
                   color={colors.onPrimary}
                 />
@@ -215,27 +295,52 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
               style={styles.submitBtn}
             />
 
-            {/* Divider */}
-            <View style={styles.dividerRow}>
-              <View style={styles.dividerLine} />
-              <Text style={styles.dividerText}>OU</Text>
-              <View style={styles.dividerLine} />
-            </View>
+            {/* Divider & Biometrics (apenas no login) */}
+            {mode === 'login' && (
+              <>
+                <View style={styles.dividerRow}>
+                  <View style={styles.dividerLine} />
+                  <Text style={styles.dividerText}>OU</Text>
+                  <View style={styles.dividerLine} />
+                </View>
 
-            {/* Biometrics */}
-            <Button
-              title="Entrar com Biometria / Face ID"
-              variant="secondary"
-              onPress={handleBiometrics}
-              icon={
-                <MaterialCommunityIcons
-                  name="fingerprint"
-                  size={22}
-                  color={colors.primary}
+                <Button
+                  title="Entrar com Biometria / Face ID"
+                  variant="secondary"
+                  onPress={handleBiometrics}
+                  icon={
+                    <MaterialCommunityIcons
+                      name="fingerprint"
+                      size={22}
+                      color={colors.primary}
+                    />
+                  }
+                  iconPosition="left"
                 />
-              }
-              iconPosition="left"
-            />
+              </>
+            )}
+
+            {/* Toggle Mode Footer Link */}
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => {
+                setMode(mode === 'login' ? 'register' : 'login');
+                setErrors({});
+              }}
+              style={styles.toggleModeLink}
+            >
+              <Text style={styles.toggleModeText}>
+                {mode === 'login' ? (
+                  <>
+                    Não possui cadastro? <Text style={styles.toggleModeHighlight}>Cadastre-se aqui</Text>
+                  </>
+                ) : (
+                  <>
+                    Já possui conta? <Text style={styles.toggleModeHighlight}>Faça login aqui</Text>
+                  </>
+                )}
+              </Text>
+            </TouchableOpacity>
           </Card>
 
           {/* Volunteer Tip */}
@@ -373,6 +478,35 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 4,
   },
+  tabsSwitchContainer: {
+    flexDirection: 'row',
+    backgroundColor: colors.surfaceContainerLow,
+    borderRadius: borderRadius.md,
+    padding: 4,
+    marginBottom: spacing.xs,
+  },
+  switchTab: {
+    flex: 1,
+    paddingVertical: 10,
+    alignItems: 'center',
+    borderRadius: borderRadius.default,
+  },
+  switchTabActive: {
+    backgroundColor: colors.surfaceContainerLowest,
+    shadowColor: colors.onSurface,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.08,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  switchTabText: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: colors.onSurfaceVariant,
+  },
+  switchTabTextActive: {
+    color: colors.primaryContainer,
+  },
   loginCard: {
     padding: spacing.md,
     marginTop: spacing.xs,
@@ -445,6 +579,19 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: colors.outline,
     marginHorizontal: 12,
+  },
+  toggleModeLink: {
+    alignItems: 'center',
+    marginTop: spacing.md,
+    paddingVertical: 6,
+  },
+  toggleModeText: {
+    fontSize: 12,
+    color: colors.onSurfaceVariant,
+  },
+  toggleModeHighlight: {
+    color: colors.primaryContainer,
+    fontWeight: '700',
   },
   tipCard: {
     flexDirection: 'row',
